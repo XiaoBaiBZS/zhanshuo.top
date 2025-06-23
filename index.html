@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白展硕 | ZhanshuoBai</title>
+    <link rel="icon" href="./src/icon_logo.webp">
+    </link>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#000000',
+              secondary: '#10B981', // 蓝绿色（青绿色）
+              accent: '#3B82F6', // 蓝色（辅助色）
+              neutral: '#121212',
+              'neutral-light': '#2a2a2a',
+              'neutral-dark': '#0a0a0a',
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+        .text-shadow {
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .bg-gradient-ai {
+          background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+        }
+        .shape-blob {
+          border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+          animation: blob-morph 8s linear infinite;
+        }
+        .shape-blob-2 {
+          border-radius: 38% 62% 33% 67% / 55% 27% 73% 45%;
+          animation: blob-morph 10s linear infinite reverse;
+        }
+        @keyframes blob-morph {
+          0% {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+          }
+          25% {
+            border-radius: 58% 42% 30% 70% / 55% 55% 45% 45%;
+          }
+          50% {
+            border-radius: 35% 65% 50% 50% / 45% 45% 55% 55%;
+          }
+          75% {
+            border-radius: 65% 35% 40% 60% / 55% 55% 45% 45%;
+          }
+          100% {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+          }
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+        .gradient-text {
+          background: linear-gradient(90deg, #10B981, #3B82F6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+          transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        .editor-content {
+          font-size: clamp(0.5rem, 2vw, 0.75rem);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-primary text-white font-inter overflow-x-hidden">
+    <!-- 英雄区域 -->
+    <section class="min-h-screen flex items-center relative overflow-hidden bg-primary">
+      <!-- 背景动态装饰元素 -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse-slow"
+          style="animation-delay: 1s"></div>
+        <div class="absolute top-1/2 right-1/5 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl animate-pulse-slow"
+          style="animation-delay: 2s"></div>
+      </div>
+
+      <div
+        class="container mx-auto px-8 sm:px-12 md:px-4 lg:px-24 py-16 md:py-20 flex flex-col md:flex-row items-start md:items-center relative z-10">
+        <div class="md:w-1/2 mb-8 md:mb-0 transform transition-transform duration-700 hover:scale-[1.02]">
+          <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-tight mb-4">
+            <span class="block text-white text-shadow">Hello👋</span>
+            <span class="gradient-text text-shadow">I'm 白展硕.</span>
+          </h1>
+          <p class="text-[clamp(1rem,3vw,1.25rem)] text-gray-300 mb-6 max-w-lg leading-relaxed">
+            代码实现创意 <br class="md:hidden">
+            <span class="text-sm md:text-base text-gray-400"> Code fuels creation.</span>
+          </p>
+
+          <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mb-6">
+            <a href="#features"
+              class="px-6 py-2.5 bg-gradient-ai rounded-full text-center font-semibold shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center">
+              <i class="fa fa-code mr-2"></i> 我的作品
+            </a>
+            <a href="#footer"
+              class="px-6 py-2.5 border-2 border-white/30 rounded-full text-center font-semibold hover:bg-white/5 transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center">
+              找到我 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <div class="mt-6 flex items-center space-x-3">
+            <div class="flex -space-x-3">
+              <img src="./src/icon_flutter.webp" alt="flutter"
+                class="w-10 h-10 rounded-full border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              <img src="./src/icon_springboot.webp" alt="springboot"
+                class="w-10 h-10 rounded-full border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              <img src="./src/icon_php.webp" alt="php"
+                class="w-10 h-10 rounded-full border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              <img src="./src/icon_go.webp" alt="go"
+                class="w-10 h-10 rounded-full border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <div class="text-sm text-gray-400">
+              <span class="block font-semibold text-white">使用或正在学习</span>
+              <span class="text-xs">Flutter/SpringBoot/PHP/Go</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[100%] sm:w-[100%] md:w-[65%] lg:w-[70%] relative">
+          <!-- 代码编辑器 - 增强3D效果和动态阴影 -->
+          <div class="w-full relative h-[33 0px] sm:h-[440px] md:h-[440px] lg:h-[440px]">
+            <div
+              class="absolute inset-0 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] transform rotate-1 hover:rotate-0 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-accent/5 rounded-2xl blur-md opacity-70">
+            </div>
+
+            <div class="h-full w-full flex items-center justify-center p-1 sm:p-2 relative z-10">
+              <div class="w-full h-full max-w-[98%] max-h-[95%] md:max-w-[92%] md:max-h-[88%]
+          bg-neutral-light/90 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl
+          flex flex-col overflow-hidden transform hover:scale-[1.01] transition-transform duration-500">
+
+                <!-- 标题栏 - 增强细节 -->
+                <div class="flex items-center p-2 md:p-3 flex-shrink-0 bg-neutral-light/50 border-b border-white/5">
+                  <div class="flex space-x-2">
+                    <div class="w-3 h-3 bg-red-500 rounded-full shadow-inner"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full shadow-inner"></div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full shadow-inner"></div>
+                  </div>
+                  <div class="ml-3 text-sm font-medium text-gray-300">ZhanshuoBai.json</div>
+                  <div class="ml-auto text-xs sm:text-sm text-gray-400">JSON</div>
+                </div>
+
+                <!-- 代码内容区 - 优化排版 -->
+                <div class="flex-1 overflow-auto p-3 pr-2">
+                  <div class="font-mono text-sm sm:text-base space-y-2">
+                    <pre class="text-white">{</pre>
+                    <pre class="text-blue-400 pl-4">   "name":<span class="text-orange-400">"Zhanshuo Bai"</span>,</pre>
+                    <pre
+                      class="text-blue-400 pl-4">   "email":<span class="text-orange-400">"Zhanshuo.Bai@outlook.com"</span>,</pre>
+
+                    <pre
+                      class="text-blue-400 pl-8"> "website":<span class="text-orange-400">"http://zhanshuo.top"</span>,</pre>
+                    <pre class="text-blue-400 pl-8"> "qqID":<span class="text-orange-400">"XiaoBaiBZS"</span>,</pre>
+
+                    <pre
+                      class="text-blue-400 pl-4">   "location":<span class="text-orange-400">"Zhejiang Hangzhou"</span>,</pre>
+                    <pre class="text-blue-400 pl-4">   "education":<span class="text-orange-400">"ZJUT"</span></pre>
+                    <pre class="text-white">}</pre>
+                  </div>
+                </div>
+
+                <!-- 底部装饰条 - 增强动态效果 -->
+                <div class="h-0.5 bg-gradient-to-r from-secondary to-accent mx-3 mb-3 rounded-full animate-pulse-slow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center">
+        <a href="#features" class="inline-block animate-bounce">
+          <i class="fa fa-chevron-down text-xl text-gray-400"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- 特性区域 -->
+    <section id="features" class="py-16 bg-neutral relative overflow-hidden">
+      <!-- 背景装饰元素 -->
+      <div class="absolute -top-16 -right-16 w-56 h-56 bg-secondary/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
+
+      <div class="container mx-auto px-3 sm:px-4 md:px-4 relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold mb-3">
+            <span class="block gradient-text">作品/项目</span>
+          </h2>
+          <p class="text-gray-300 max-w-2xl mx-auto text-base md:text-lg">
+
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- 踏浪 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-secondary/30 transition-all duration-300 border-2 border-transparent group-hover:border-secondary/50">
+              <img src="./src/icon_surfroute.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-secondary transition-colors flex items-center justify-between">
+              <span>踏浪 | SurfRoute</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_flutter_trans.webp" alt="flutter"
+                  class="h-8 w-auto opacity-70 group-hover:opacity-100 transition-opacity">
+                <img src="./src/icon_springboot_trans.webp" alt="springboot"
+                  class="h-8 w-auto opacity-100 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              时间和空间两个维度精细规划旅游行程，细分旅游步骤并在地图中详细绘制标注；精调踏浪AI生成导游讲解词；留存车票纪念票根并纪念背后的故事。共享社区，共享攻略，共享交通线。
+            </p>
+            <a href="http://www.surfroute.cn"
+              class="inline-flex items-center text-secondary text-sm font-medium group-hover:underline">
+              获取应用 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+          <!-- 墨痕题镌 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-all duration-300 border-2 border-transparent group-hover:border-accent/50">
+              <img src="./src/icon_inkscribe.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
+              <span>墨痕题镌 | Inkscribe</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_flutter_trans.webp" alt="flutter"
+                  class="h-8 w-auto opacity-70 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              实现一个更好用的、更适用于教学场景的手写笔记软件，支持 PDF 标注、手写标注等功能。以大屏和 Windows 平台为主，使用 Flutter 跨平台框架开发。
+            </p>
+            <a href="https://github.com/XiaoBaiBZS/Inkscribe"
+              class="inline-flex items-center text-accent text-sm font-medium group-hover:underline">
+              查看 GitHub 仓库 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+
+          <!-- PrintLab -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-secondary transition-all duration-300 border-2 border-transparent group-hover:border-secondary">
+              <img src="./src/icon_printlab.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-secondary transition-colors flex items-center justify-between">
+              <span>PrintLab</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_html_trans.webp" alt="html"
+                  class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity">
+                <img src="./src/icon_php_trans.webp" alt="php"
+                  class="h-8 w-auto opacity-70 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              实验室场景下智能动态化管理3D打印设备与耗材，通过审核-生产-运输流程化管理规范对设备的使用。含用户权限分级、设备及耗材的借用、计价下单、留言备注、邮件推送等功能。
+            </p>
+            <a href="http://printlab.zhanshuo.top"
+              class="inline-flex items-center text-secondary text-sm font-medium group-hover:underline">
+              前往网站 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+          <!-- LabNav -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-all duration-300 border-2 border-transparent group-hover:border-accent/50">
+              <img src="./src/icon_labnav.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
+              <span>屏语 | LabNav</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_flutter_trans.webp" alt="flutter"
+                  class="h-8 w-auto opacity-70 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              实验室外宣大屏辅助软件，用于展示实验室风采，可以通过本软件在 Android TV 大屏上更容易的播放媒体演示，并通过多语言字幕来更好的对外展示实验室风采。
+            </p>
+            <a href="https://github.com/XiaoBaiBZS/SmartCar_Lab_Introduction_ZJUT"
+              class="inline-flex items-center text-accent text-sm font-medium group-hover:underline">
+              查看 GitHub 仓库 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+          <!-- 杭城迹忆 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-purple-400/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-400/30 transition-all duration-300 border-2 border-transparent group-hover:border-purple-400/50">
+              <img src="./src/icon_hzmemory.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-purple-400 transition-colors flex items-center justify-between">
+              <span>杭城迹忆</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_html_trans.webp" alt="html"
+                  class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity">
+                <img src="./src/icon_php_trans.webp" alt="php"
+                  class="h-8 w-auto opacity-70 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              在杭旅游真实攻略，所有图片真实拍摄。AI 智能规划路线和时间，使用热力图、点图可视化旅行成果数据直观展示用户出行打卡点，路线规划分享的功能，在线制作出行路线上云共享。
+            </p>
+            <a href="http://hz.zhanshuo.top"
+              class="inline-flex items-center text-purple-400 text-sm font-medium group-hover:underline">
+              前往网站 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+
+          <!-- 多文言Duo -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-all duration-300 border-2 border-transparent group-hover:border-accent/50">
+              <img src="./src/icon_duo.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
+              <span>多文言Duo</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_lua_trans.webp" alt="lua"
+                  class="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              高中时期做的一个整合众多学习网站和文档的 WebView Lua App 作品。致力于高中语文学习，集成了古诗、文言、成语、词典、历史等功能。可以直接预览、下载原创的文学文档。
+            </p>
+            <a href="https://github.com/XiaoBaiBZS/DuoWenYan_Duo"
+              class="inline-flex items-center text-accent text-sm font-medium group-hover:underline">
+              查看 GitHub 仓库 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+          <!-- 粼光 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-all duration-300 border-2 border-transparent group-hover:border-accent/50">
+              <img src="./src/icon_sparkinglight.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3 class="text-lg font-bold mb-2 group-hover:text-accent transition-colors">粼光 | Sparkling</h3>
+            <p class="text-gray-400 mb-3 text-sm">
+              高中时期参与的一个 Lua 应用分发平台的合作项目，负责第二/三版网站、WebView Lua App、后台管理程序的开发及 UI 设计，现在已经由 WordPress 转型成一个开源内容社区，作者不再参与贡献。
+            </p>
+            <a href="https://www.lgboxs.com/lgtime"
+              class="inline-flex items-center text-accent text-sm font-medium group-hover:underline">
+              前往网站 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+          <!-- 课程时钟 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-secondary/30 transition-all duration-300 border-2 border-transparent group-hover:border-secondary/50">
+              <img src="./src/icon_coreclock.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-secondary transition-colors flex items-center justify-between">
+              <span>课程时钟 | CoreClock</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_lua_trans.webp" alt="lua"
+                  class="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+
+            <p class="text-gray-400 mb-3 text-sm">
+              高中疫情时期的项目，用于旧手机改造成同时显示课程表以及时钟的 Lua App，同时应用还包含倒数日的功能，此项目已停止继续完成。开源仓库中的代码也是我曾经“胡乱代码”的“有力证据”。😖
+            </p>
+            <a href="https://github.com/XiaoBaiBZS/Core_Clock"
+              class="inline-flex items-center text-secondary text-sm font-medium group-hover:underline">
+              查看 GitHub 仓库 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+          <!-- E测评 -->
+          <div class="bg-neutral-light/50 backdrop-blur-sm rounded-2xl p-5 border border-white/5 card-hover group">
+            <div
+              class="w-12 h-12 bg-orange-400/20 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-400/30 transition-all duration-300 border-2 border-transparent group-hover:border-orange-400/50">
+              <img src="./src/icon_easytest.webp" alt="springboot"
+                class="fa  w-full h-full rounded-2xl border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+            </div>
+            <h3
+              class="text-lg font-bold mb-2 group-hover:text-orange-400 transition-colors flex items-center justify-between">
+              <span>E测评 | EasyTest</span>
+              <div class="flex items-center space-x-1.5"> <!-- 包裹图标并设置间距 -->
+                <img src="./src/icon_lua_trans.webp" alt="lua"
+                  class="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+              </div>
+            </h3>
+
+            <p class="text-gray-400 mb-3 text-sm">
+              高中时期对学科网(e网通)平台的 Lua 脚本整合，在保留原网页功能的基础上，提供自定义跳转摄像机扫描试卷、屏蔽返回误操作等功能，同时整合教师阅卷平台，使其可以在移动端用更大的手机屏幕视野阅卷。
+            </p>
+            <a href="https://github.com/XiaoBaiBZS/Easy_Test"
+              class="inline-flex items-center text-orange-400 text-sm font-medium group-hover:underline">
+              查看 GitHub 仓库 <i class="fa fa-long-arrow-right ml-2 group-hover:ml-3 transition-all text-xs"></i>
+            </a>
+          </div>
+
+
+
+
+
+        </div>
+
+
+
+        <div class="mt-12 flex justify-center">
+          <a href="https://github.com/XiaoBaiBZS?tab=repositories"
+            class="px-6 py-2.5 bg-gradient-ai rounded-full text-center font-semibold shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all transform hover:-translate-y-1">
+            前往 GitHub 查看更多 <i class="fa fa-code-fork ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-dark py-8" id="footer">
+      <div class="container mx-auto px-4 md:px-4  ">
+        <div class="grid grid-cols-1 md:grid-cols-2      gap-16   ">
+          <div>
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 g-white rounded-lg flex items-center justify-center mr-2">
+                <img src="./src/logo.jpg" alt="springboot"
+                  class="w-12 h-12 rounded-full border-2 border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </div>
+              <span class="text-lg font-bold">白展硕<br><span class="text-sm font-inter">Zhanshuo
+                  Bai</span></span>
+
+
+            </div>
+            <p class="text-gray-400 text-xs mb-3">
+              代码实现创意 Code fuels creation.
+            </p>
+            <div class="flex space-x-2">
+              <a href="https://github.com/XiaoBaiBZS" class="text-gray-400 hover:text-white transition-colors text-sm">
+                <img src="./src/icon_github.webp" alt="springboot"
+                  class="fa  w-10 h-10 rounded-full  border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </a>
+              <a href="https://b23.tv/vkCAx76" class="text-gray-400 hover:text-white transition-colors text-sm">
+                <img src="./src/icon_bilibili.webp" alt="springboot"
+                  class="fa  w-10 h-10 rounded-full  border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </a>
+              <a href="http://www.coolapk.com/u/3543373"
+                class="text-gray-400 hover:text-white transition-colors text-sm">
+                <img src="./src/icon_coolapk.webp" alt="springboot"
+                  class="fa  w-10 h-10 rounded-full  border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </a>
+              <a href="https://qm.qq.com/q/yYRYyC2ME0" class="text-gray-400 hover:text-white transition-colors text-sm">
+                <img src="./src/icon_qq.webp" alt="springboot"
+                  class="fa  w-10 h-10 rounded-full border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </a>
+
+              <a href="mailto:Zhanshuo.Bai@outlook.com"
+                class="text-gray-400 hover:text-white transition-colors text-sm">
+                <img src="./src/icon_email.webp" alt="springboot"
+                  class="fa  w-10 h-10 rounded-full  border-primary object-cover shadow-lg hover:scale-110 transition-transform">
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-medium mb-4 text-base flex items-center">
+              简要信息
+              <a href="./src/浙江工业大学_自动化_本科_白展硕.pdf"
+                class="ml-4 inline-flex items-center px-3 py-1.5 bg-secondary/10 hover:bg-secondary/20 text-secondary text-sm font-medium rounded-lg group transition-all duration-300">
+
+                下载简历<i class="fa fa-arrow-down mr-2 ml-2 mt-0.5 group-hover:rotate-45 transition-transform"></i>
+              </a>
+            </h4>
+            <ul class="space-y-3 text-gray-400 text-xl">
+              <li class="relative pl-0 group">
+
+                <a href="#"
+                  class=" text-xs block hover:text-white transition-colors duration-300 group-hover:translate-x-1">
+                  <span class="font-semibold text-gray-300 text-xs">教育</span>：浙江工业大学 信息工程学院 自动化专业 2023-至今
+                </a>
+              </li>
+              <li class="relative pl-0 group">
+
+                <a href="#"
+                  class="  text-xs block hover:text-white transition-colors duration-300 group-hover:translate-x-1">
+                  <span class="font-semibold text-gray-300  text-xs">主修</span>：数电模电、ROS机器人、数学建模、Java、C++等
+                </a>
+              </li>
+              <li class="relative pl-0 group">
+
+                <a href="#"
+                  class=" text-xs block hover:text-white transition-colors duration-300 group-hover:translate-x-1">
+                  <span
+                    class="font-semibold text-gray-300  text-xs">技能</span>：FLutter、HTML/JS/CSS、SpringBoot、MyBatis、PHP、Python等
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+
+
+
+        </div>
+        <div class="border-t border-white/10 mt-6 pt-4 flex flex-col md:flex-row justify-between items-start">
+          <p class="text-gray-500 text-xs mb-3 md:mb-0">
+            &copy; 2025 ZhanshuoBai. All rights reserved.
+            <br class="md:hidden">
+            页面部分资源来自网络，如有侵权请联系删除。
+            <br>
+            黑ICP备2024017115号-2
+            <br class="md:hidden ">
+            黑公网安备23010402000305
+          </p>
+          <div class="flex space-x-3">
+            <a href="./private_policy.html" class="text-gray-500 hover:text-white text-xs transition-colors">隐私政策</a>
+            <a href="./user_agreement.html" class="text-gray-500 hover:text-white text-xs transition-colors">服务条款</a>
+
+          </div>
+        </div>
+    </footer>
+
+    <script>
+      // 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 10,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+
+</html>
